@@ -6,7 +6,7 @@ House & Apartaments Classification model
 
 Примеры изображений:
 
-## Екстерьер
+## Экстерьер
 ![](/Exterior.jpeg)
 
 ## Гардеробная

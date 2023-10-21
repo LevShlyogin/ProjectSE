@@ -1,4 +1,4 @@
-import streamlit as st 
+import streamlit as st
 
 # Project Title
 st.title("Room Classification Project")
@@ -21,5 +21,3 @@ uploadedFile = st.file_uploader('Upload image here')
 if uploadedFile is not None:
     st.write("Filename:", uploadedFile.name)
     st.write("Data:", uploadedFile)
-    
-    
