@@ -21,7 +21,7 @@ House & Apartaments Classification model
 - Сидоркин Георгий Владимирович РИМ-130908
 - Рахарди Сандикха РИМ-130908
 - Мухин Виктор Александрович РИМ-130908
-
+- Шлёгин Лев Русланович РИМ-130908
 ## Installation
 ```bash
 pip install streamlit
