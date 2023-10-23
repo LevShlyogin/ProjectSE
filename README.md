@@ -7,15 +7,15 @@ House & Apartaments Classification model
 Примеры изображений:
 
 ## Экстерьер
-![](/Exterior.jpeg)
+![](/assets/exterior.jpeg)
 
 ## Гардеробная
 
-![](/closets.jpg)
+![](/assets/closets.jpg)
 
 ## Кухня
 
-![](/kitchen.jpeg)
+![](/assets/kitchen.jpeg)
 
 ## Team Member
 - Сидоркин Георгий Владимирович РИМ-130908
