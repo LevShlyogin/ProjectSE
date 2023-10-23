@@ -2,6 +2,8 @@ import io
 import streamlit as st
 import tensorflow as tf
 from PIL import Image
+from transformers import pipeline
+
 
 def load_image():
     uploadedFile = st.file_uploader('Upload image here')
@@ -20,9 +22,8 @@ def preprocess_image(img):
     x = tf.keras.applications.efficientnet.preprocess_input(x)
     return x
 
-@st.cache_data()
 def load_model():
-    return tf.keras.applications.efficientnet.EfficientNetB0(weights='imagenet')
+    return pipeline(model="JuanMa360/room-classification")
 
 # Project Title
 st.title("Room Classification Project")
@@ -47,4 +48,6 @@ result = st.button('Submit')
 
 if result:
     x = preprocess_image(loadedImage)
-    st.write(model)
+    prediction = model.predict(loadedImage)
+    st.write("""#### Output""")
+    st.write(prediction)

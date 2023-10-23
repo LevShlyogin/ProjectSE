@@ -29,6 +29,9 @@ pip install streamlit
 ```bash
 pip install tensorflow
 ```
+```bash
+pip install transformers
+```
 
 ## Usage
 
