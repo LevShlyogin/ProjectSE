@@ -34,5 +34,8 @@ pip install transformers
 ```
 
 ## Usage
+open terminal and run this command
 
-## License
+```bash
+streamlit run app.py
+```
