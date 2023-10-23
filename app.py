@@ -1,4 +1,28 @@
+import io
 import streamlit as st
+import tensorflow as tf
+from PIL import Image
+
+def load_image():
+    uploadedFile = st.file_uploader('Upload image here')
+
+    if uploadedFile is not None:
+        st.write("Filename:", uploadedFile.name)
+        image_data = uploadedFile.getvalue()
+        st.image(image_data)
+        return Image.open(io.BytesIO(image_data))
+    else:
+        return None
+    
+def preprocess_image(img):
+    img = img.resize((100, 100))
+    x = tf.keras.utils.img_to_array(img)
+    x = tf.keras.applications.efficientnet.preprocess_input(x)
+    return x
+
+@st.cache_data()
+def load_model():
+    return tf.keras.applications.efficientnet.EfficientNetB0(weights='imagenet')
 
 # Project Title
 st.title("Room Classification Project")
@@ -9,15 +33,18 @@ st.write("""
          #### TEAM MEMBER
          - Сидоркин Георгий Владимирович РИМ-130908
          - Рахарди Сандикха РИМ-130908
+         - Мухин Виктор Александрович РИМ-130908
          -
-         -
-         
-         #### Our Project
          """)
 
-# Upload the image sam
-uploadedFile = st.file_uploader('Upload image here')
+st.write("""#### Our Project""")
 
-if uploadedFile is not None:
-    st.write("Filename:", uploadedFile.name)
-    st.write("Data:", uploadedFile)
+# Initial function
+loadedImage = load_image()
+model = load_model()
+
+result = st.button('Submit')
+
+if result:
+    x = preprocess_image(loadedImage)
+    st.write(model)

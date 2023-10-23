@@ -23,6 +23,12 @@ House & Apartaments Classification model
 - Мухин Виктор Александрович РИМ-130908
 
 ## Installation
+```bash
+pip install streamlit
+```
+```bash
+pip install tensorflow
+```
 
 ## Usage
 
