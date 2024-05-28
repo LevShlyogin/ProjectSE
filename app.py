@@ -36,8 +36,26 @@ def preprocess_image(img: Image.Image) -> tf.Tensor:
     x = tf.expand_dims(x, axis=0)  # Add batch dimension
     return x
 
-def load_model():
-    return pipeline(model="JuanMa360/room-classification")
+def load_model(model_name: str = "JuanMa360/room-classification") -> pipeline:
+    """Load the specified model for classification.
+    
+    Args:
+        model_name (str): The name of the model to load.
+        
+    Returns:
+        pipeline: The loaded model pipeline.
+    """
+    return pipeline(model=model_name)
+
+def display_classification_results(results: Dict[str, float]):
+    """Display the classification results.
+    
+    Args:
+        results (Dict[str, float]): The classification results.
+    """
+    st.write("### Classification Results:")
+    for room_type, score in results.items():
+        st.write(f"{room_type}: {score:.2f}")
 
 # Project Title
 st.title("Room Classification Project")
