@@ -82,3 +82,49 @@ def display_team_info(team_info: str):
         team_info (str): The markdown string containing team information.
     """
     st.write(team_info)
+def save_results(results: Dict[str, float], filename: str = "results.txt"):
+    """Save the classification results to a text file.
+    
+    Args:
+        results (Dict[str, float]): The classification results.
+        filename (str): The name of the file to save the results.
+    """
+    with open(filename, "w") as file:
+        for room_type, score in results.items():
+            file.write(f"{room_type}: {score:.2f}\n")
+    st.write(f"Results saved to {filename}")
+
+def main():
+    """Main function to run the Streamlit app."""
+    display_project_title("Room Classification Project")
+    
+    team_info = """
+    ### House & Apartments Classification Model
+    #### TEAM MEMBERS
+    - Сидоркин Георгий Владимирович РИМ-130908
+    - Романова Виктория РИМ-130908
+    - Гребнев Никита РИМ-130908
+    - Шлёгин Лев Русланович РИМ-130908
+
+    #### Our Project
+    """
+    display_team_info(team_info)
+    
+    model_name = st.selectbox("Select Classification Model", ["JuanMa360/room-classification", "other-model-1", "other-model-2"])
+    model = load_model(model_name)
+    
+    loaded_image = load_image()
+    
+    if loaded_image is not None and st.button('Submit'):
+        try:
+            x = preprocess_image(loaded_image)
+            prediction = model(x)
+            st.write("#### Output")
+            display_classification_results(prediction)
+            if st.button("Save Results"):
+                save_results(prediction)
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+
+if name == "main":
+    main()
